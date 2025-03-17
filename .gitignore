@@ -1,0 +1,7 @@
+/.import
+/.gdpm
+/mono
+/.mono
+/.vs
+/exports/*
+!/exports/.gdignore

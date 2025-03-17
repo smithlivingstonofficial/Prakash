@@ -1,0 +1,188 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://nodes/screens/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://nodes/fx/Starfield.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/Righteous-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/sounds/powerup.wav" type="AudioStream" id=4]
+[ext_resource path="res://resources/GameTheme.tres" type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 14
+font_data = ExtResource( 3 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Starfield" parent="." instance=ExtResource( 2 )]
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="All" type="VBoxContainer" parent="Margin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 530.0
+margin_bottom = 850.0
+size_flags_vertical = 3
+
+[node name="Top" type="VBoxContainer" parent="Margin/All"]
+margin_right = 520.0
+margin_bottom = 270.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSTitle" type="Label" parent="Margin/All/Top"]
+margin_right = 520.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 1 )
+text = "HUD_HIGHSCORE"
+align = 1
+valign = 1
+
+[node name="HSValue" type="Label" parent="Margin/All/Top"]
+margin_top = 35.0
+margin_right = 520.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Margin" type="MarginContainer" parent="Margin/All"]
+margin_top = 274.0
+margin_right = 520.0
+margin_bottom = 544.0
+size_flags_vertical = 7
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 80
+
+[node name="Title" type="Label" parent="Margin/All/Margin"]
+margin_top = 20.0
+margin_right = 520.0
+margin_bottom = 190.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+text = "SC
+Space Shooter"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Margin/All"]
+margin_top = 548.0
+margin_right = 520.0
+margin_bottom = 818.0
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="StartGame" type="Button" parent="Margin/All/Buttons"]
+margin_right = 520.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 4 )
+text = "MENU_START_GAME"
+
+[node name="Options" type="Button" parent="Margin/All/Buttons"]
+margin_top = 77.0
+margin_right = 520.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 5 )
+text = "MENU_OPTIONS"
+
+[node name="Tests" type="Button" parent="Margin/All/Buttons"]
+margin_top = 154.0
+margin_right = 520.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 6 )
+text = "MENU_TESTS"
+
+[node name="OptionsButtons" type="VBoxContainer" parent="Margin/All"]
+visible = false
+margin_top = 690.0
+margin_right = 520.0
+margin_bottom = 916.0
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="Languages" type="OptionButton" parent="Margin/All/OptionsButtons"]
+margin_right = 520.0
+margin_bottom = 37.0
+theme = ExtResource( 5 )
+text = "LANGUAGE_ENGLISH"
+items = [ "LANGUAGE_ENGLISH", null, false, 0, null, "LANGUAGE_FRENCH", null, false, 1, null ]
+selected = 0
+
+[node name="HowToPlay" type="Button" parent="Margin/All/OptionsButtons"]
+margin_top = 77.0
+margin_right = 520.0
+margin_bottom = 114.0
+theme = ExtResource( 5 )
+text = "BTN_HOW_TO_PLAY"
+
+[node name="BackButton" type="Button" parent="Margin/All/OptionsButtons"]
+margin_top = 154.0
+margin_right = 520.0
+margin_bottom = 191.0
+custom_fonts/font = SubResource( 7 )
+text = "BTN_BACK"
+
+[node name="Bottom" type="VBoxContainer" parent="Margin/All"]
+margin_top = 822.0
+margin_right = 520.0
+margin_bottom = 840.0
+
+[node name="Version" type="Label" parent="Margin/All/Bottom"]
+margin_left = 390.0
+margin_right = 520.0
+margin_bottom = 18.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 8 )
+text = "Version [VERSION]"
+align = 2
+valign = 1
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
+
+[node name="Tween" type="Tween" parent="."]
